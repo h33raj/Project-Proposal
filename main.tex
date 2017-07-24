@@ -401,7 +401,7 @@ Email: heerajhnair@am.students.amrita.edu}}
 
 \begin{abstract}
 %\boldmath
-In this proposal, We investigate the extent of device fingerprinting possible in Tor browser via the different JavaScript API. We even examine how much perlavent are the older fingerprinting technique. We will try to produce a unique hash with the help of these results which will help the users without the help of cookies. We propose privacy attack that could identify hidden service using these weakness. After the end of the research we will come with add-on which will defend with the privacy issues in firefox. 
+In this proposal, We investigate the extent of device fingerprinting possible in Tor browser via the different JavaScript API. We even examine how much perlavent are the older fingerprinting technique. We will also examine all the Javascript API's for finding new fingerprinting technique. We will try to produce a unique hash with the help of these results which will help the users without the help of cookies. We propose privacy attack that could identify hidden service using these weakness. After the end of the research we will come with add-on which will defend with the privacy issues in firefox. We will also propose our idea on how the defence can be made to defend this issue for Tor browser.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -433,7 +433,14 @@ Tor, Fingerprinting, Tracking
 
 
 \section{Introduction}
-\blindtext
+Web advertisers and analytic collect large volume of data based on our Internet browsing pattern. These type of data help them to make user profile which eventually reveals your user location, incomes, family status, interests and much about you. Identification of user can lead to showing higher prices, blocking some services or data and even directing to misleading information.
+
+Most of the users to defend tracking usually delete their cookies but the tracking technologies are much evolved practice of deleting cookies have become less effective to users who is defending using deleting cookies. Many defencing tactics have been evolved in the recent years such as 'incognito' mode or private browsing, use of VPN or IP masking techniques, use of extensions and adds-on such as Ghostery, Disconnect, HTTPS everywhere etc.
+
+But most of the defensive technique fail if the advertiser use the method of fingerprinting. Browser fingerprinting is a technique of uniquely identifying the individual user by the unique pattern of information collected which often includes browser type and version, operating system and version, screen resolution, font detection, plugins, time zones, languages, battery usage, hardware configurations and many more.
+
+Millions of users use anonymous services such as Tor to defend client's privacy from his destination. Tor communicated through multiple number of relays using numerous number of encryptions such that none of the relays will be revealed the client's identity and destination. But still the advertisers can still cause privacy issues by using Browser fingerprinting.Tor browser has done series of patches to enhanse their privacy, they are using a component Tor button which takes care of Application level security and privacy concerns in Firefox. To protect against Tor exit Node eavesdropper, it includes HTTPS-Everywhere and to protect from optional defense against javascript and other potential exploit vectors using NoScript.
+
 
 \subsection{Subsection Heading Here}
 \blindtext
@@ -590,9 +597,10 @@ The authors would like to thank...
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{Pixel Perfect}
+Mowery, K., Shacham, H.: Pixel perfect: Fingerprinting canvas in HTML5 In:
+Fredrikson, M. (ed.) Proceedings of W2SP 2012. IEEE Computer Society (May
+2012), https://cseweb.ucsd.edu/∼hovav/dist/canvas.pdf
 
 \end{thebibliography}
 
