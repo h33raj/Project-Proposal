@@ -444,8 +444,22 @@ More that 2 Million of daily users use anonymous services such as Tor to defend 
 Tor browser doesn't support some APIs such as Battery API, Network Connection API and plugins such as Flash. Fingerprinting techniques like Font Fingerprinting are defended by disabling all the attempts to enumerate the system font by limiting the number of fonts in the system. Moreover the image data from the canvas is returned blank to defend against canvas Fingerprinting technique. But some of the browser properties has to released that are given same values and the properties that uncover the identity are simply disabled.
 
 According to 2015 study, 90\% .onion sites are distinguishable from the regular sites. 
-\subsection  {Subsection Heading Here}
-\blindtext
+
+\section{Background and Related work}
+\section*{Background}
+Tor browser is based on Mozilla Extended Support Release(ESR) Firefox branch. But there are many patches been applied to enhance the security and privacy.
+Many of the patches are even done in Firefox and even the Tor browser features is augmented through the Tor browser extension. As a part of protection against Tor Exit Node eavesdroping, they have used HTTPS-Everywhere and to provide optional defense against javascript they have user NoSript and even they have made many modification in several of Firefox settings.
+
+Privacy requirements help in reducing the privacy risk and ability of user's activity of one website to be linked with the user's activity of the another website without any knowledge of the user. 
+
+ - Cross-Origin Identifier Unlinkability :  
+Users activity must not be linked from one origin by any other origin without user interation and approval. This is mainly due to authentication tokens, browser identifiers and shared state.
+
+ - Cross-Origin Fingerprinting Unlinkability : Users activity must not be linked from one origin to another origin by any of the third party from fingerprinting browser behaviour
+
+ - Long-Term Unlinkability : browser should clear all its linkable state such authentication tokens and browser state and obtain a fresh identity.
+
+There are 3 diffginerent security level in Tor browser - high, medium and low. In High Javascript is disabled by default. In some sites Javascript is enabled performance optimizations are disabled. Scripts on some sites may run slower.HTML5 video and audio media become click to play via NoScript. Some mechanism of displaying math equations, some font rendering features, some  types of images are disabled. In medium, same things are implied but Javascript is only disabled in non-HTTPS sites. Low level is most usable level in Tor browser. It doesn't block Javascript.
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
@@ -532,6 +546,14 @@ According to 2015 study, 90\% .onion sites are distinguishable from the regular 
 % floats. This can be corrected via the \fnbelowfloat command of the
 % stfloats package.
 
+
+\section*{Relate Work}
+aaaa
+
+\section*{Related Work}
+aaa
+
+\section*{Previous findings}
 
 
 \section{Conclusion}
