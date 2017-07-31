@@ -458,8 +458,15 @@ Users activity must not be linked from one origin by any other origin without us
  - Cross-Origin Fingerprinting Unlinkability : Users activity must not be linked from one origin to another origin by any of the third party from fingerprinting browser behaviour
 
  - Long-Term Unlinkability : browser should clear all its linkable state such authentication tokens and browser state and obtain a fresh identity.
+ 
+Tor browser is not using any addons such as Addblock Plus, Ghostery, Priv3 which are actually avoided because they believe these are not going to ensure any privacy protection, Tor believe the development should be in general solution. (Give the dom change paper xhound) One of the research which happened in recent years showed that both extension and addons usage can be another fingerprinting vector as they can identifed using chrom URI and they produce change in the DOM which can lead us to easily who which extension they are using.  
 
-There are 3 diffginerent security level in Tor browser - high, medium and low. In High Javascript is disabled by default. In some sites Javascript is enabled performance optimizations are disabled. Scripts on some sites may run slower.HTML5 video and audio media become click to play via NoScript. Some mechanism of displaying math equations, some font rendering features, some  types of images are disabled. In medium, same things are implied but Javascript is only disabled in non-HTTPS sites. Low level is most usable level in Tor browser. It doesn't block Javascript.
+There are 3 diffginerent security level in Tor browser - high, medium and low. In High Javascript is disabled by default. In some sites Javascript is enabled performance optimizations are disabled. Scripts on some sites may run slower.HTML5 video and audio media become click to play via NoScript. Some mechanism of displaying math equations, some font rendering features, some  types of images are disabled. In medium, same things are implied but Javascript is only disabled in non-HTTPS sites. Low level is most usable level in Tor browser. It doesn't block Javascript. 
+
+In Torbrowser the Firefox proxy settings use Tor directly as a SOCKS proxy. To prevent WebRTC at the compile time it is disabled. All the plugins such as flash are disabled in Tor browser. Firefox addons can perform arbitary activity including bypassing Tor, that is reason there is addons whitelist. It doesn't even load any system wide extensions. Tor browser have all information written inside the bundle directory. Tor even disables third party cookies and all the cache enteries are isolated from URL bar domain. 
+
+Operating system fingerprinting is not considered a big problem in privacy even though tor browser has reduced the entropy of finding the os to 2 bits. At least 3 HTML5 API Battery API, the Network Connection API and sensor API are disabled in the current browser because of fingerprinting. Even the mozilla services are disabled in Tor to make non of the mozilla services are contacted. Some of the feature in javascript functions like readers view and connection state has been disabled. 
+
 
 % needed in second column of first page if using \IEEEpubid
 %\IEEEpubidadjcol
