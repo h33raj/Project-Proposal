@@ -401,7 +401,7 @@ Email: heerajhnair@am.students.amrita.edu}}
 
 \begin{abstract}
 %\boldmath
-In this proposal, We investigate the extent of device fingerprinting possible in Tor browser via the different JavaScript API. We even examine how much perlavent are the older fingerprinting technique. We will also examine all the Javascript API's for finding new fingerprinting technique. We will try to produce a unique hash with the help of these results which will help the users without the help of cookies. We propose privacy attack that could identify hidden service using these weakness. After the end of the research we will come with add-on which will defend with the privacy issues in firefox. We will also propose our idea on how the defence can be made to defend this issue for Tor browser.
+In this proposal, We investigate the extent of device fingerprinting possible in Tor browser via the different JavaScript API. We even examine how much perlavent are the older fingerprinting technique. We will also examine all the Javascript API's for finding new fingerprinting technique. We will try to produce a unique hash with the help of these results which will help the users to track without the help of cookies. We will be analyzing the Tor browser bug trac issues and some side channel attacks. After the end of the research we will come with add-on which will defend with the privacy issues in firefox. We will also propose our idea on how the defence can be made to defend this issue for Tor browser.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -443,12 +443,20 @@ More that 2 Million of daily users use anonymous services such as Tor to defend 
 
 Tor browser doesn't support some APIs such as Battery API, Network Connection API and plugins such as Flash. Fingerprinting techniques like Font Fingerprinting are defended by disabling all the attempts to enumerate the system font by limiting the number of fonts in the system. Moreover the image data from the canvas is returned blank to defend against canvas Fingerprinting technique. But some of the browser properties has to released that are given same values and the properties that uncover the identity are simply disabled.
 
-According to 2015 study, 90\% .onion sites are distinguishable from the regular sites. 
+According to 2015 study, 90\% .onion sites are distinguishable from the regular sites. We will also be dealing with side channel attacks, side channel attacks are based on the information gained from the physical implementation rather than brute force or theoretical weakness. 
 
 \section{Background and Related work}
 \section*{Background}
-Tor browser is based on Mozilla Extended Support Release(ESR) Firefox branch. But there are many patches been applied to enhance the security and privacy.
-Many of the patches are even done in Firefox and even the Tor browser features is augmented through the Tor browser extension. As a part of protection against Tor Exit Node eavesdroping, they have used HTTPS-Everywhere and to provide optional defense against javascript they have user NoSript and even they have made many modification in several of Firefox settings.
+Krishnamurthy and Wills on their paper, Privacy Diffusion on the web[2] have done a longitudinal study where they have shown that tracking on the web have steadily increased and more an more techniques are formed in the coming years which implies there should be more study done on the area of privacy.
+
+Privacy techniques has quite evolved in the past 10 years. Ten years back, for tracking the users HTTP cookies were used then it went towards Flash cookies. With the evolution of web and introduction of HTML5 the trackers or the third party advertisers started using HTML5 storage such as localStorage, sessionStorage, indexedDB and ETag for tracking users. But the limitation with the HTTP cookie user delete cookies within 30 days. 
+
+With the advancement of web tracking third party trackers and advertisers started focusing on browser fingerprinting. Browser fingerprinting is one of most used way of tracking user's nowadays. Many of the API such as battery API, network API, WebGL, Canvas, browser properties, plugins and many other propeties are being used for uniquely identifying the users. Beyond that there are even some research where the login leaks can identify which social network the users are currently logged in. Nowadays extensions and adds on have become a part of web browser, by loading the URI schema and event handlers we can make user profile which make the advertiser know which extensions are being used by a user.
+
+Many of the browser fingerprinting techniques such as canvas fingerprinting, font and plugin enumeration, extension detection and other tracking issues which are still prevalent in browsers such as Mozilla, chrome etc. But these issues have defense in the case of tor browser.  the Some of side channels attacks and some other fingerprinting techniques such as os fingerprinting using math function, getClientRects fingerprinting and audio fingerprinting are still present. Canvas Fingerprinting[1] which one of the major fingerprinting techniques which is been used by big companies has defense technique with Tor Browser but  it doesn't automatically deny canvas Fingerprinting or block it. It gives a prompt or user a access to whether allow it or not.
+
+\section{Design and Model foI for Tor Browser}
+Tor browser is based on Mozilla Extended Support Release(ESR) Firefox branch. But there are many patches been applied to enhance the security and privacy. Some of the famous security features include HTTPS everywhere, which automatically switches thousands of sites from HTTP to HTTPS. Many of the patches are even done in Firefox and even the Tor browser features is augmented through the Tor browser extension. As a part of protection against Tor Exit Node eavesdroping, they have used HTTPS-Everywhere and to provide optional defense against javascript they have user NoSript and even they have made many modification in several of Firefox settings.
 
 Privacy requirements help in reducing the privacy risk and ability of user's activity of one website to be linked with the user's activity of the another website without any knowledge of the user. 
 
@@ -466,6 +474,7 @@ There are 3 diffginerent security level in Tor browser - high, medium and low. I
 In Torbrowser the Firefox proxy settings use Tor directly as a SOCKS proxy. To prevent WebRTC at the compile time it is disabled. All the plugins such as flash are disabled in Tor browser. Firefox addons can perform arbitary activity including bypassing Tor, that is reason there is addons whitelist. It doesn't even load any system wide extensions. Tor browser have all information written inside the bundle directory. Tor even disables third party cookies and all the cache enteries are isolated from URL bar domain. 
 
 Operating system fingerprinting is not considered a big problem in privacy even though tor browser has reduced the entropy of finding the os to 2 bits. At least 3 HTML5 API Battery API, the Network Connection API and sensor API are disabled in the current browser because of fingerprinting. Even the mozilla services are disabled in Tor to make non of the mozilla services are contacted. Some of the feature in javascript functions like readers view and connection state has been disabled. 
+
 
 
 % needed in second column of first page if using \IEEEpubid
@@ -553,14 +562,14 @@ Operating system fingerprinting is not considered a big problem in privacy even 
 % floats. This can be corrected via the \fnbelowfloat command of the
 % stfloats package.
 
-
-\section*{Relate Work}
-aaaa
-
 \section*{Related Work}
-aaa
+
 
 \section*{Previous findings}
+
+
+
+\section*{Methodology and Findings}
 
 
 \section{Conclusion}
@@ -633,7 +642,31 @@ Mowery, K., Shacham, H.: Pixel perfect: Fingerprinting canvas in HTML5 In:
 Fredrikson, M. (ed.) Proceedings of W2SP 2012. IEEE Computer Society (May
 2012), https://cseweb.ucsd.edu/∼hovav/dist/canvas.pdf
 
+\bibitem{Pixel Perfect}
+KRISHNAMURTHY, B., AND WILLS, C. Privacy diffusion on the
+web: a longitudinal perspective. In Proceedings of the 18th international
+conference on World wide web (2009), ACM, pp. 541–
+550
+
+\bibitem{Design and Implementation of Tor Browser}
+Design and Implementation of Tor Browser.
+https://www.torproject.org/projects/torbrowser/design/
+
+\bibitem{Sensor Fingerprinting}
+BOJINOV, H., MICHALEVSKY, Y., NAKIBLY, G., AND BONEH,
+D. Mobile device identification via sensor fingerprinting. arXiv
+preprint arXiv:1408.1416 (2014).
+
+\bibitem{One Side-Channel to Bring Them All and in the Darkness Bind Them:
+Associating Isolated Browsing Sessions}
+Tom Van Goethem, Wouter Joosen, One Side-Channel to Bring Them All and in the Darkness Bind Them:
+Associating Isolated Browsing Sessions, woot17, 2017
+
+\bibitem{Know the Tor browser and tails version}
+Get the Tor browser version and tails version, https://github.com/jonaslejon/tor-fingerprint/
+
 \end{thebibliography}
+
 
 % biography section
 % 
