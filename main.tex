@@ -563,10 +563,10 @@ Operating system fingerprinting is not considered a big problem in privacy even 
 % stfloats package.
 
 \section*{Related Work}
-
+KUL Work needs to be added, and some side channel attacks
 
 \section*{Previous findings}
-
+We were looking to into bugtraq of Tor browser we were able to find different ways of fingerprinting Tor browser. Some of the Javascript API which were responsible for fingerprinting were removed from the Tor browser but inspite of that there are some API which is needed for the proper functioning of website. For example Math in Javascript, which is an important function in the case of web which will be used by many developers. With the help of Math one can do OS fingerprinting. If the value of Math.tan(-1e300) is -1.4214488238747245 then the os it is Linux machine and if the value is then -4.987183803371025 then it is Windows machine.
 
 
 \section*{Methodology and Findings}
