@@ -353,7 +353,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Tor Browser Privacy Measurement}
+\title{Browser Fingerprinting in Tor Browser}
 
 
 % author names and affiliations
@@ -471,10 +471,9 @@ Tor browser is not using any addons such as Addblock Plus, Ghostery, Priv3 which
 
 There are 3 diffginerent security level in Tor browser - high, medium and low. In High Javascript is disabled by default. In some sites Javascript is enabled performance optimizations are disabled. Scripts on some sites may run slower.HTML5 video and audio media become click to play via NoScript. Some mechanism of displaying math equations, some font rendering features, some  types of images are disabled. In medium, same things are implied but Javascript is only disabled in non-HTTPS sites. Low level is most usable level in Tor browser. It doesn't block Javascript. 
 
-In Torbrowser the Firefox proxy settings use Tor directly as a SOCKS proxy. To prevent WebRTC at the compile time it is disabled. All the plugins such as flash are disabled in Tor browser. Firefox addons can perform arbitary activity including bypassing Tor, that is reason there is addons whitelist. It doesn't even load any system wide extensions. Tor browser have all information written inside the bundle directory. Tor even disables third party cookies and all the cache enteries are isolated from URL bar domain. 
+In Torbrowser the Firefox proxy settings use Tor directly as a SOCKS proxy. To prevent WebRTC at the compile time it is disabled. All the plugins such as flash are disabled in Tor browser. Firefox addons can perform arbitary activity including bypassing Tor, that is reason there is addons whitelist. It doesn't even load any system wide extensions[7]. Tor browser have all information written inside the bundle directory. Tor even disables third party cookies and all the cache enteries are isolated from URL bar domain. Similar to canvas can be used for Fingerprinting the WebGL is also used for fingerprinting, there was recent research which even suggested that WebGL can be even used for Cross Browser Fingerprinting. The defense stratergies used by Tor browser helps us to protect from the issue of privacy. 
 
 Operating system fingerprinting is not considered a big problem in privacy even though tor browser has reduced the entropy of finding the os to 2 bits. At least 3 HTML5 API Battery API, the Network Connection API and sensor API are disabled in the current browser because of fingerprinting. Even the mozilla services are disabled in Tor to make non of the mozilla services are contacted. Some of the feature in javascript functions like readers view and connection state has been disabled. 
-
 
 
 % needed in second column of first page if using \IEEEpubid
@@ -563,23 +562,53 @@ Operating system fingerprinting is not considered a big problem in privacy even 
 % stfloats package.
 
 \section*{Related Work}
-KUL Work needs to be added, and some side channel attacks
+One of the recent paper from KU Leuven university[5] talks about some attacks in Tor browser which can deanonymize the user in Tor browser which can find out the IP address of the user. One of the attack mentioned by them was Cross Session Events in which if an devicechange event happen it would fire in all browsing context even in incognito mode, which can help in identifying and is an privacy issue. As a consequence of this the specification was altered to only fire the event on tabs that were either previously given permission to access media devices, or that are active. Otherwise this can even result in Cross browser fingerprinting. Similarly online/offline, languagechange, devicemotion, Battery had also some privacy issues of Cross Session Events. But some of these issues such as online/offline changes is already given protection in Tor browser. Some side channel issues such as the convert channel issue are also discussed in the research. Some of the website such as browser leaks which can be used for understanding the known techniques of fingerprinting in different browsers.
 
 \section*{Previous findings}
 We were looking to into bugtraq of Tor browser we were able to find different ways of fingerprinting Tor browser. Some of the Javascript API which were responsible for fingerprinting were removed from the Tor browser but inspite of that there are some API which is needed for the proper functioning of website. For example Math in Javascript, which is an important function in the case of web which will be used by many developers. With the help of Math one can do OS fingerprinting. If the value of Math.tan(-1e300) is -1.4214488238747245 then the os it is Linux machine and if the value is then -4.987183803371025 then it is Windows machine.
 
+Some of the low hanging fingerprinting targets would be the User-agent, Accept-* headers, pipeline usage, request orderings and what are the custom filters which are being used for privacy protection. Javascript Date object reveals OS type can be used for OS Fingerprinting, the result or the date format returned is different for different OS. 
 
-\section*{Methodology and Findings}
+JavaScript API can be used get the size of the screen and window even though some efforts are been made by Tor browser to give protection. Till now correct patch regarding the screen width is not available. Canvas fingerprinting have certain defense in the case of Tor browser but actually in spite of forcefully stopping it, it asks the user as a prompt whether they wanted to block the canvas fingerprinting or not. 
 
+Font fingerprinting can be even done in the current version of Tor browser but they have reduced the fingerprinting effect by reducing the number of fonts being used in the system.
+CSS media queries can be used by the third party trackers for getting more information about the desktop size, widget size, display type, DPI, user agent type about the user which was formerly more available to JavaScript.
+
+Website traffic fingerprinting is an attempt to recognize the encrypted traffic patterns of specific websites, this may take in place between user and guard node. There has been many researches and papers in this area providing defenses and protection for example: using random padding in CSS, Js and other files by using comments which will make attacker job of fingerprinting website very difficult. 
+
+\begin{center}
+ \begin{tabular}{|c|c|c|} 
+ \hline
+ Techniques & Defense(tb) & Privacy in others  \\ [0.5ex] 
+ \hline\hline
+ Canvas Fingerprinting & Yes & No \\ [1ex]
+ \hline
+ WebGL Fingerprinting & Yes & No \\ [1ex]
+ \hline
+ Extension detection & Yes & No \\ [1ex]
+ \hline
+ Font Enumeration & Partial & No  \\ [1ex]
+ \hline
+ OS Fingerprinting & No & No \\ [1ex]
+ \hline
+ Simultaneous event & No & No \\ [1ex] 
+ \hline
+ Convert Channel & No & No \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\section{Timeline}
+We will be testing all the issues which are present in the Tor bugtrac. Mostly the open issues will be given more priority. We will be testing the results in different operating system such as Linux, Windows and Mac Os. We will be also be evaluating the privacy concerns of all the JavaScript API's about the 742 API's listed in the w3c for finding the privacy issues in the Tor browser.
+
+Next step would be using the data for making a hash which could help in identifying the user's uniquely. Already there are many known methods for OS fingerprinting and even for Tor browser version fingerprinting and tails version fingerprinting. We will be also using some of the methods which has privacy issues in Tor browser for fingerprinting.
+
+Last part of the research is the defense, we will behave to blacklist or remove some of the JavaScript API. We will also have to choose methods of padding or some way of confusing the third parties such that more false positive arise such that extent of fingerprinting goes down.
 
 \section{Conclusion}
-\blindtext
+Our work was intended to improve the security of Tor browsers. Tor browser is regarded as the most secure and more private browser, for improving the privacy more researches has to be done in the browser fingerprinting part. In this paper we have intended to show the issues with JavaScript based web fingerprinting in Tor browsers and its implications.
 
-
-
-
-
-% if have a single appendix:
+% if have a single appendix
 %\appendix[Proof of the Zonklar Equations]
 % or
 %\appendix  % for no appendix heading
@@ -592,18 +621,6 @@ We were looking to into bugtraq of Tor browser we were able to find different wa
 % \subsection or using \label (\appendices by itself
 % starts a section numbered zero.)
 %
-
-
-\appendices
-\section{Proof of the First Zonklar Equation}
-\blindtext
-
-% use section* for acknowledgement
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
-
 
 % Can use something like this to put references on a page
 % by themselves when using endfloat and the captionsoff option.
@@ -665,7 +682,13 @@ Associating Isolated Browsing Sessions, woot17, 2017
 \bibitem{Know the Tor browser and tails version}
 Get the Tor browser version and tails version, https://github.com/jonaslejon/tor-fingerprint/
 
+\bibitem{XHOUND: Quantifying the Fingerprintability of Browser
+ Extensions}
+Oleksii Starov and Nick Nikiforakis. XHOUND: Quantifying the Fingerprintability of Browser Extensions. In \textit{Proceedings} of ACM, 2013.
+  
+
 \end{thebibliography}
+
 
 
 % biography section
@@ -700,5 +723,3 @@ Get the Tor browser version and tails version, https://github.com/jonaslejon/tor
 
 % that's all folks
 \end{document}
-
-
